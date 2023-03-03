@@ -1,0 +1,21 @@
+.sidebar{
+    height: 100%;
+}
+.unorderedList{
+    list-style: none;
+    padding: 10px 0px 0 0;
+    margin: 0;
+}
+.unorderedList li{
+   padding: 10px 20px;
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
+.unorderedList li:hover{
+    background-color: #f4f4f4;
+}
+.link{
+    text-decoration: none;
+    color: black;
+}

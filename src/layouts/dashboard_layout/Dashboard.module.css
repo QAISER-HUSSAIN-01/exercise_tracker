@@ -1,0 +1,32 @@
+.layout{
+    height: 100vh;
+    width: 100%;
+}
+.navbarContainer{
+    height: 8vh;
+    box-shadow: 1px 1px 3px gray;
+    border-bottom: 1px solid lightgrey;
+}
+.sectionContainer{
+    display: flex;
+    height: calc(100vh - 8vh);
+}
+
+.sidebarContainer{
+    width: max-content;
+    overflow-y: auto;
+    box-shadow: 1px 3px 3px gray;
+    z-index: 999;
+    transition: 0.3s;
+}
+.contentContainer{
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+@media (max-width:600px){
+    .navbarContainer{height: 7vh;}
+    .sectionContainer{height: calc(100vh - 7vh);}
+    .sidebarContainer{position: absolute; bottom: 0; top: 7vh; left: 0px; background-color: white;}
+}

@@ -1,0 +1,15 @@
+.getstarted{
+    /* transition: 0.5s; */
+    animation: btn 4s infinite ease-in-out;
+}
+@keyframes btn{
+    0%{
+        margin-top: 0px;
+    }
+    50%{
+        margin-top: 20px;
+    }
+    100%{
+        margin-top: 0px;
+    }
+}

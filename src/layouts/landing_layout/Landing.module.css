@@ -1,0 +1,39 @@
+.wrapper{
+    position: relative;
+    height: 100vh;
+}
+.bgimg{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 90vh;
+    width: 60%;
+    background-color: #ffbf00;
+    border-bottom-left-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: banner 1s ease-out;
+    transition: 0.3s;
+}
+
+.type{
+    float: right;
+    color: #ffbf00;
+}
+
+@media(max-width:800px){
+    .bgimg{
+        /* display: none; */
+    width: 80%;
+    }
+}
+
+@keyframes banner{
+    0%{
+        top:-100%
+    }
+    100%{
+        top:0
+    }
+}
