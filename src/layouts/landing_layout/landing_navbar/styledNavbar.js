@@ -10,10 +10,12 @@ export const StyledNavbar = styled(Box)(({theme})=>({
 
 export const Logo = styled(Box)(({theme})=>({
     fontSize :'2rem',
-    zIndex:'1'
+    zIndex:'1',
+    cursor:'pointer'
 }))
 
 export const NavbarButtons = styled(Box)(({theme})=>({
     display:'flex',
-    gap:'20px'
+    gap:'20px',
+    zIndex:1
 }))

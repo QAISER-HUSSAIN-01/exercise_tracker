@@ -1,9 +1,11 @@
 import React from 'react'
-import ActivityCard from '../../../src/components/cards'
+import UpdateForm from '../../../src/components/updateForm'
 import DashboardLayout from '../../../src/layouts/dashboard_layout/DashboardLayout'
-export default function Activities() {
-  return (<ActivityCard />)
+
+export default function Update() {
+  return (<UpdateForm />)
 }
-Activities.getLayout = function(page){
+
+Update.getLayout = function(page){
   return <DashboardLayout>{page}</DashboardLayout>
 }

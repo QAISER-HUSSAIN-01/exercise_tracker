@@ -15,7 +15,7 @@ function Sidebar({ hide, handleSidebarLinks }) {
             onClick={handleSidebarLinks}
           >
             <li>
-              {item.icon} <span style={{ display: hide }}>{item.name} </span>
+              <span style={{color:'#ffbf00'}}> {item.icon} </span> <span style={{ display: hide }}>{item.name} </span>
             </li>
           </Link>
         ))}

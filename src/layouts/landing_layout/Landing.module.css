@@ -1,6 +1,7 @@
 .wrapper{
     position: relative;
     height: 100vh;
+    background: linear-gradient(150deg, lightgrey, #f4f4f4, white);
 }
 .bgimg{
     position: absolute;
@@ -15,6 +16,7 @@
     align-items: center;
     animation: banner 1s ease-out;
     transition: 0.3s;
+    z-index: 0.5;
 }
 
 .type{
@@ -24,8 +26,8 @@
 
 @media(max-width:800px){
     .bgimg{
-        /* display: none; */
-    width: 80%;
+        display: none;
+    /* width: 80%; */
     }
 }
 
