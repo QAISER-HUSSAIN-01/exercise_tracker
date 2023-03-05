@@ -17,7 +17,7 @@ export default function SignupForm() {
   
   const handleChange = (e)=>{
     e.preventDefault();
-    setData({...data,[e.target.name]:e.target.value});
+    setData({...data,[e.target.name]:e.target.value.toLowerCase()});
   }
   const handleSubmit = async()=>{
     try{

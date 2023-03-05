@@ -18,7 +18,7 @@ export default function SigninForm() {
     const [data,setData] = useState({email:'',password:''});
     const handleChange = (e)=>{
       e.preventDefault();
-      setData({...data,[e.target.name]:e.target.value});
+      setData({...data,[e.target.name]:e.target.value.toLowerCase()});
     }
 
     const handleSubmit = async()=>{
