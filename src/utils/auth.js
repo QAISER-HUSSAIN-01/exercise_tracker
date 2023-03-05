@@ -3,7 +3,7 @@ import {useCookies} from 'react-cookie';
 export default function useAuth(){
     const [allCookies,setCookie,removeCookie] = useCookies();
     const logout = ()=>{
-        setCookie('token','',{})
+        removeCookie('token')
         return true
     }
     const checkToken = ()=>{
