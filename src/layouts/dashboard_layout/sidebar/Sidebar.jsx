@@ -4,8 +4,18 @@ import { items } from './list';
 import Link from 'next/link';
 import { MdLogout } from 'react-icons/md';
 import { IconButton } from '@mui/material';
-
+import useAuth from '../../../utils/auth';
+import { useRouter } from 'next/router';
 function Sidebar({ hide, handleSidebarLinks }) {
+  const router = useRouter();
+  const {logout} = useAuth()
+  const handelSignout = ()=>{
+   const removed = logout();
+   console.log(removed);
+   if(removed){
+    router.push('/signin')
+   }
+  }
   return (
     <div className={styles.sidebar}>
       <ul className={styles.unorderedList}>
@@ -22,11 +32,11 @@ function Sidebar({ hide, handleSidebarLinks }) {
           </Link>
         ))}
       </ul>
-      <IconButton>
+      <IconButton onClick={handelSignout}>
         <MdLogout />
       </IconButton>
     </div>
   )
 }
 
-export default Sidebar
+export default Sidebar;
