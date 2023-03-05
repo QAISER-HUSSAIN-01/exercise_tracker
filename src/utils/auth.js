@@ -1,11 +1,13 @@
 import {useCookies} from 'react-cookie';
 
 export default function useAuth(){
-    const [cookies,setCookie,removeCookie] = useCookies();
+    const [allCookies,setCookie,removeCookie] = useCookies();
     const logout = ()=>{
         setCookie('token','',{})
         return true
-    
     }
-    return {logout}
+    const checkToken = ()=>{
+        return allCookies.token
+    }
+    return {logout,checkToken}
 }
