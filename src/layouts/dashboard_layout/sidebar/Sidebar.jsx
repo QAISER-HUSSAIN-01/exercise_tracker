@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './Sidebar.module.css'
 import { items } from './list';
 import Link from 'next/link';
+import { MdLogout } from 'react-icons/md';
+import { IconButton } from '@mui/material';
 
 function Sidebar({ hide, handleSidebarLinks }) {
   return (
@@ -20,6 +22,9 @@ function Sidebar({ hide, handleSidebarLinks }) {
           </Link>
         ))}
       </ul>
+      <IconButton>
+        <MdLogout />
+      </IconButton>
     </div>
   )
 }

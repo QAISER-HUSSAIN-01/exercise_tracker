@@ -4,20 +4,43 @@ import { Button, InputAdornment, TextField } from '@mui/material';
 import {MdKey, MdMail} from 'react-icons/md';
 import Link from 'next/link';
 import useNotify from '../../utils/notifyMessage';
+import axios from 'axios';
+import {useCookies} from 'react-cookie';
+import { useRouter,NextRouter } from 'next/router';
+
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/':'https://exercise-tracker-three-psi.vercel.app/'
+
 export default function SigninForm() {
-  const {successMessage} = useNotify()
+  const {successMessage,errorMessage} = useNotify();
+  const [cookies,setCookie] = useCookies();
+  const router = useRouter();
+
     const [data,setData] = useState({email:'',password:''});
     const handleChange = (e)=>{
       e.preventDefault();
       setData({...data,[e.target.name]:e.target.value});
     }
-    const handleSubmit = ()=>{
-      console.log(data);
-      successMessage('Logged In Successfully')
+
+    const handleSubmit = async()=>{
+      try {
+      const response = await axios.post(`${url}api/signin`,data);
+        if(response.data.success){
+          setData({email:'',password:''});
+          setCookie('token',response.data.token, {maxAge:60*60*24*30});
+          router.push('/dashboard')
+          return successMessage(response.data.message);
+        }else{
+          return errorMessage(response.data.message);
+        }
+      } catch (error) {
+        errorMessage(error.message)
+      }
     }
+
   return (
 
     <FormContainer component={'form'}>
+      <Button onClick={()=>router.push('/dashboard')}>dashbaord</Button>
       <FormHeading>SIGN IN</FormHeading>
       <FormFields>
         <TextField fullWidth placeholder='Email' name='email' value={data.email} onChange={handleChange} InputProps={{endAdornment:<InputAdornment position='end'><MdMail /></InputAdornment>}}/>

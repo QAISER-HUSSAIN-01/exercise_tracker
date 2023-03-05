@@ -4,16 +4,35 @@ import { Button, InputAdornment, TextField } from '@mui/material';
 import {MdKey, MdMail,MdPerson } from 'react-icons/md';
 import Link from 'next/link';
 import useNotify from '../../utils/notifyMessage';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/':'https://exercise-tracker-three-psi.vercel.app/'
+
+
 export default function SignupForm() {
-  const {successMessage} = useNotify()
+  const {successMessage,errorMessage} = useNotify()
   const [data,setData] = useState({username:'',email:'',password:''});
+  const router = useRouter();
+  
   const handleChange = (e)=>{
     e.preventDefault();
     setData({...data,[e.target.name]:e.target.value});
   }
-  const handleSubmit = ()=>{
-    console.log(data);
-    successMessage('Registered Successfully')
+  const handleSubmit = async()=>{
+    try{
+      const response = await axios.post(`${url}api/signup`,data);
+      console.log(response);
+      if(response.status === 201){
+        setData({username:'',email:'',password:''})
+        router.push('/signin')
+        return successMessage(response.data.message)
+      }else{
+        return errorMessage(response.data.message)
+      }
+    }catch(error){
+      return errorMessage(error.message)
+    }   
   }
   return (
     <FormContainer>
