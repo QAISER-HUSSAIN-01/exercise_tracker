@@ -23,15 +23,13 @@ export default function SignupForm() {
     try{
       const response = await axios.post(`${url}api/signup`,data);
       console.log(response);
-      if(response.status === 201){
+      if(response.data.success){
         setData({username:'',email:'',password:''})
         router.push('/signin')
         return successMessage(response.data.message)
-      }else{
-        return errorMessage(response.data.message)
       }
     }catch(error){
-      return errorMessage(error.message)
+      errorMessage(error.response.data.message);
     }   
   }
   return (

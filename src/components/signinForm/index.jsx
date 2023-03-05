@@ -29,18 +29,16 @@ export default function SigninForm() {
           setCookie('token',response.data.token, {maxAge:60*60*24*30});
           router.push('/dashboard')
           return successMessage(response.data.message);
-        }else{
-          return errorMessage(response.data.message);
         }
       } catch (error) {
-        errorMessage(error.message)
+        console.log(error.response.data.message);
+        errorMessage(error.response.data.message);
       }
     }
 
   return (
 
     <FormContainer component={'form'}>
-      <Button onClick={()=>router.push('/dashboard')}>dashbaord</Button>
       <FormHeading>SIGN IN</FormHeading>
       <FormFields>
         <TextField fullWidth placeholder='Email' name='email' value={data.email} onChange={handleChange} InputProps={{endAdornment:<InputAdornment position='end'><MdMail /></InputAdornment>}}/>

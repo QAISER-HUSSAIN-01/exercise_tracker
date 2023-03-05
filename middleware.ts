@@ -8,10 +8,11 @@ export const config = {
 const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : 'https://exercise-tracker-three-psi.vercel.app/'
 
 export function middleware(req: NextRequest, res: NextResponse) {
-    const token = req.cookies.get('token')?.value    
+    const token = req.cookies.get('token')?.value
     if (token) {
+        NextResponse.redirect(`${url}dashboard`);
         return NextResponse.next();
     } else {
-       return NextResponse.redirect(`${url}signin`)
+        return NextResponse.redirect(`${url}signin`);
     }
 }

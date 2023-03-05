@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { BannerBox, Heading, Text, BannerButton } from './styledBanner'
 import styles from './Banner.module.css'
 import { useRouter } from 'next/router'
@@ -8,9 +8,7 @@ import Image from 'next/image'
 
 export default function Banner() {
     const router = useRouter();
-    const gotoDashboard = () => { router.push('/dashboard') }
-    const gotoSignin = () => { router.push('/dashboard') }
-    const gotoSignup = () => { router.push('/dashboard') }
+    const gotoDashboard = () => { router.push('/dashboard')}
     return (
         <BannerBox>
             <Image className={styles.bgimg} src={banner} alt={'banner image'} />

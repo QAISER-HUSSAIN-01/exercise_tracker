@@ -6,9 +6,7 @@ import { MdLogout } from 'react-icons/md';
 import { IconButton } from '@mui/material';
 import useAuth from '../../../utils/auth';
 import { useRouter } from 'next/router';
-import { NextResponse } from 'next/server';
 
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/':'https://exercise-tracker-three-psi.vercel.app/'
 
 function Sidebar({ hide, handleSidebarLinks }) {
   const router = useRouter();
