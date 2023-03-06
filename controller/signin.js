@@ -17,6 +17,6 @@ export const signIn = async(req,res)=>{
         const token = jwt.sign({id:exist._id,username:exist.username,email:exist.email},process.env.SECRET,{algorithm:'HS256'})
         return res.status(200).json({success:true,message:'successfully logged in',token:token})
     } catch (error) {
-        return res.status(500).json({success:false,message:'server down'})
+        return res.status(500).json({success:false,message:error.message})
     }
 }

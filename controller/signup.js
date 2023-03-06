@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import User from '../database/models/users';
 import bcrypt from 'bcrypt'
 
