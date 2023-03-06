@@ -3,7 +3,7 @@ import { FormContainer, FormHeading, FormFields, FormActions, ActionMessage, Fie
 import { MdPerson, MdWatch } from 'react-icons/md'
 import { Button, InputAdornment, MenuItem, TextField } from '@mui/material'
 import Link from 'next/link'
-import useNotify from '../../utils/notifyMessage';
+import useNotify from '../../hooks/useNotify';
 
 
 export default function ActivityForm() {

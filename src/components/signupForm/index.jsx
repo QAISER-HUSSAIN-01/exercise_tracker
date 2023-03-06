@@ -3,11 +3,10 @@ import { FormContainer, FormHeading, FormFields, FormActions,ActionMessage } fro
 import { Button, InputAdornment, TextField } from '@mui/material';
 import {MdKey, MdMail,MdPerson } from 'react-icons/md';
 import Link from 'next/link';
-import useNotify from '../../utils/notifyMessage';
+import useNotify from '../../hooks/useNotify';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/':'https://exercise-tracker-three-psi.vercel.app/'
+import {url} from '../../utils/url'
 
 
 export default function SignupForm() {

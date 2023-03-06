@@ -4,7 +4,7 @@ import { items } from './list';
 import Link from 'next/link';
 import { MdLogout } from 'react-icons/md';
 import { IconButton } from '@mui/material';
-import useAuth from '../../../utils/auth';
+import useAuth from '../../../hooks/useAuth';
 import { useRouter } from 'next/router';
 
 

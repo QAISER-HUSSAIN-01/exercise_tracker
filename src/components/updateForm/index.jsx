@@ -3,7 +3,7 @@ import { MdPerson, MdMail, MdKey } from 'react-icons/md'
 import { Button, InputAdornment, TextField } from '@mui/material'
 import {FormContainer,FormHeading,FormFields,FormActions,ActionMessage} from '../styledForm'
 import Link from 'next/link'
-import useNotify from '../../utils/notifyMessage';
+import useNotify from '../../hooks/useNotify';
 export default function UpdateForm() {
   const {successMessage} = useNotify()
   const [data,setData] = useState({image:'',username:'',email:'',password:''});

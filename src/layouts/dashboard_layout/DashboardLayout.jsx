@@ -3,7 +3,7 @@ import styles from './Dashboard.module.css';
 import Navbar from './navbar/Navbar';
 import Sidebar from './sidebar/Sidebar';
 import useLayout from '../../hooks/useLayout';
-import useAuth from '../../utils/auth';
+import useAuth from '../../hooks/useAuth';
 import { useRouter } from 'next/router';
 
 function DashboardLayout({ children }) {
