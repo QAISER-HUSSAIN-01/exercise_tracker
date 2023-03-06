@@ -21,7 +21,7 @@ export default function SigninForm() {
   const router = useRouter();
 
   const [data, setData] = useState({ email: "", password: "" });
-  
+
   const handleChange = (e) => {
     e.preventDefault();
     setData({ ...data, [e.target.name]: e.target.value.toLowerCase() });
@@ -32,7 +32,7 @@ export default function SigninForm() {
       const response = await axios.post(`${url}api/signin`, data);
       console.log('response : ', response);
       if (response.data.success) {
-        // setData({email:'',password:''});
+        setData({email:'',password:''});
         setCookie("token", response.data.token, { maxAge: 60 * 60 * 24 * 30 });
         successMessage(response.data.message);
         router.push("/dashboard");
