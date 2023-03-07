@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import theme from '../src/theme';
-import Landing from '../src/layouts/landing_layout/Landing';
+import Landing from '../src/layouts/landingLayout/Landing';
 import { SnackbarProvider } from 'notistack'
 import { CookiesProvider } from 'react-cookie'
 export default function App({ Component, pageProps }) {
