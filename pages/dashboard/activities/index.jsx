@@ -1,6 +1,6 @@
 import React from 'react'
 import ActivityCard from '../../../src/components/cards'
-import DashboardLayout from '../../../src/layouts/dashboard_layout/DashboardLayout'
+import DashboardLayout from '../../../src/layouts/dashboardLayout/DashboardLayout'
 export default function Activities() {
   return (<ActivityCard />)
 }

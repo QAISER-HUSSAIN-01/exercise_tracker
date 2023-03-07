@@ -1,6 +1,6 @@
 import React from 'react'
 import ActivityForm from '../../../src/components/activityForm'
-import DashboardLayout from '../../../src/layouts/dashboard_layout/DashboardLayout'
+import DashboardLayout from '../../../src/layouts/dashboardLayout/DashboardLayout'
 export default function AddActivity() {
   return (<ActivityForm />)
 }

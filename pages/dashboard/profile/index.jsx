@@ -1,6 +1,6 @@
 import React from 'react'
 import UserProfile from '../../../src/components/userProfile'
-import DashboardLayout from '../../../src/layouts/dashboard_layout/DashboardLayout'
+import DashboardLayout from '../../../src/layouts/dashboardLayout/DashboardLayout'
 
 export default function Profile() {
   return (<UserProfile />)

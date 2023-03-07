@@ -1,6 +1,6 @@
 import React from 'react'
 import UpdateForm from '../../../src/components/updateForm'
-import DashboardLayout from '../../../src/layouts/dashboard_layout/DashboardLayout'
+import DashboardLayout from '../../../src/layouts/dashboardLayout/DashboardLayout'
 
 export default function Update() {
   return (<UpdateForm />)
