@@ -17,6 +17,10 @@
     transition: 0.3s;
     /* z-index: 0.5; */
 }
+.bgimg > .img{
+    /* object-fit: 'contain'; */
+}
+
 @media(max-width:800px){
     .bgimg{
         display: none;
