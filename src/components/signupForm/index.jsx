@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FormContainer, FormHeading, FormFields, FormActions,ActionMessage } from '../styledForm';
-import { Button, InputAdornment, TextField } from '@mui/material';
+import { Button, InputAdornment, TextField, CircularProgress } from '@mui/material';
 import {MdKey, MdMail,MdPerson } from 'react-icons/md';
 import Link from 'next/link';
 import useNotify from '../../hooks/useNotify';
@@ -10,6 +10,7 @@ import {url} from '../../utils/url'
 
 
 export default function SignupForm() {
+  const [progress, setProgress] = useState(false);
   const {successMessage,errorMessage} = useNotify()
   const [data,setData] = useState({username:'',email:'',password:''});
   const router = useRouter();
@@ -19,17 +20,21 @@ export default function SignupForm() {
     setData({...data,[e.target.name]:e.target.value.toLowerCase()});
   }
   const handleSubmit = async()=>{
+    setProgress(true)
     try{
       const response = await axios.post(`${url}api/signup`,data);
       console.log(response);
       if(response.data.success){
         setData({username:'',email:'',password:''})
-        router.push('/signin')
+        await router.push('/signin')
         return successMessage(response.data.message)
+      }else{
+        return errorMessage(response.data.message)
       }
     }catch(error){
       errorMessage(error.response.data.message);
     }   
+    setProgress(false)
   }
   return (
     <FormContainer>
@@ -41,7 +46,7 @@ export default function SignupForm() {
       </FormFields>
       <FormActions>
         <ActionMessage variant='caption'>Already have an account? please <Link href={'/signin'} style={{ color: 'blue', borderBottom: '1px solid blue' }}>signin</Link>  </ActionMessage>
-        <Button variant='contained' onClick={handleSubmit}>Sign up</Button>
+        {progress ? <CircularProgress size={20}/> : <Button variant='contained' onClick={handleSubmit}>Sign up</Button> }
       </FormActions>
     </FormContainer>
   )

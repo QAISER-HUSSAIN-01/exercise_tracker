@@ -6,7 +6,12 @@ import {
   FormActions,
   ActionMessage,
 } from "../styledForm";
-import { Button, InputAdornment, TextField } from "@mui/material";
+import {
+  Button,
+  InputAdornment,
+  TextField,
+  CircularProgress,
+} from "@mui/material";
 import { MdKey, MdMail } from "react-icons/md";
 import Link from "next/link";
 import useNotify from "../../hooks/useNotify";
@@ -16,6 +21,7 @@ import { useRouter } from "next/router";
 import { url } from "../../utils/url";
 
 export default function SigninForm() {
+  const [progress, setProgress] = useState(false);
   const { successMessage, errorMessage } = useNotify();
   const [allCookies, setCookie] = useCookies();
   const router = useRouter();
@@ -29,17 +35,18 @@ export default function SigninForm() {
 
   const handleSubmit = async () => {
     try {
+      setProgress(true);
       const response = await axios.post(`${url}api/signin`, data);
       if (response.data.success) {
         setData({ email: "", password: "" });
-        setCookie("token", response.data.token, { maxAge: 60 * 60 * 24 * 30});
+        setCookie("token", response.data.token, { maxAge: 60 * 60 * 24 * 30 });
         successMessage(response.data.message);
       }
     } catch (error) {
-      console.log(error.response.data.message);
       errorMessage(error.response.data.message);
     }
     await router.push(`/dashboard`);
+    setProgress(false);
   };
 
   return (
@@ -85,9 +92,13 @@ export default function SigninForm() {
             signup
           </Link>{" "}
         </ActionMessage>
-        <Button variant="contained" onClick={handleSubmit}>
-          Sign in
-        </Button>
+        {progress ? (
+          <CircularProgress size={20}/>
+        ) : (
+          <Button variant="contained" onClick={handleSubmit}>
+            Sign in
+          </Button>
+        )}
       </FormActions>
     </FormContainer>
   );
