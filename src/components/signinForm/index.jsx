@@ -30,17 +30,16 @@ export default function SigninForm() {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(`${url}api/signin`, data);
-      console.log('response : ', response);
       if (response.data.success) {
-        setData({email:'',password:''});
-        setCookie("token", response.data.token, { maxAge: 60 * 60 * 24 * 30 });
+        setData({ email: "", password: "" });
+        setCookie("token", response.data.token, { maxAge: 60 * 60 * 24 * 30});
         successMessage(response.data.message);
-        router.push("/dashboard");
       }
     } catch (error) {
       console.log(error.response.data.message);
       errorMessage(error.response.data.message);
     }
+    await router.push(`/dashboard`);
   };
 
   return (

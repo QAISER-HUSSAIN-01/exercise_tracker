@@ -8,9 +8,9 @@ export const config = {
 export function middleware(req: NextRequest, res: NextResponse) {
   const token = req.cookies.get("token")?.value;
   if (token) {
-    NextResponse.redirect(`${url}dashboard`);
+     NextResponse.redirect(`${url}dashboard`);
   } else {
-    return NextResponse.redirect(`${url}signin`);
+     NextResponse.redirect(`${url}signin`);
   }
   NextResponse.next();
 }
