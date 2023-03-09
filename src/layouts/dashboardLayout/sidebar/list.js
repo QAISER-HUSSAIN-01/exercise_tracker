@@ -1,4 +1,4 @@
-import {MdDashboard,MdListAlt,MdAddToPhotos, MdCalendarMonth, MdSettings,MdPerson} from 'react-icons/md'
+import {MdDashboard,MdListAlt,MdAddToPhotos, MdCalendarMonth, MdSettings,MdPerson,MdLogout} from 'react-icons/md'
 export const items = [
     {
         icon:<MdDashboard />,
@@ -30,4 +30,5 @@ export const items = [
         name:'Setting',
         to:'/dashboard/setting'
     }
+    
 ]

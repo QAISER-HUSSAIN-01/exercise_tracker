@@ -10,7 +10,6 @@ function DashboardLayout({ children }) {
   const [handleSidebar,handleSidebarLinks,left,hide] = useLayout();
   const {checkToken} = useAuth();
   const router = useRouter();
-  console.log(checkToken());
   const token = checkToken();
   useEffect(() => {
     !token ? router.push('/signin'):''
