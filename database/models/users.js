@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Exercise from "./exercies";
+
 const userSchema = mongoose.Schema({
     username:{type:String,required:true},
     email:{type:String,required:true},

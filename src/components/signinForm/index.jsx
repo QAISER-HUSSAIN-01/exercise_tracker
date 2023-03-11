@@ -41,11 +41,11 @@ export default function SigninForm() {
         setData({ email: "", password: "" });
         setCookie("token", response.data.token, { maxAge: 60 * 60 * 24 * 30 });
         successMessage(response.data.message);
+        await router.push(`/dashboard`);
       }
     } catch (error) {
       errorMessage(error.response.data.message);
     }
-    await router.push(`/dashboard`);
     setProgress(false);
   };
 

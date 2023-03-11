@@ -7,7 +7,7 @@ import { Box } from "@mui/material";
 
 export async function getServerSideProps() {
   const response = await axios.get(`${url}api/exercise`);
-  const cards = response.data.data;
+  const cards = response.data.data || [];
   return {
     props: {
       cards: cards,
@@ -17,7 +17,7 @@ export async function getServerSideProps() {
 
 export default function Activities({ cards }) {
   const CardsRender = () => {
-    return cards.map((item, index) => <ActivityCard card={item} key={index} />);
+    return cards[0] ? cards.map((item, index) => <ActivityCard card={item} key={index} />) : 'no activities';
   };
   return (
     <Box sx={{display:'flex',flexWrap:'wrap', gap:'10px',justifyContent:'center',padding:'20px 0px'}}>

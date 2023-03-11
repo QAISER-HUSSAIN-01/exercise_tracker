@@ -1,15 +1,15 @@
-import {addExercise,deleteExercise,getAllExercises,getExercise,updateExercise} from '../../controller/exercise'
-import db from '../../database/db';
+import {addUser,getAllUsers} from '../../../controller/user'
+import db from '../../../database/db';
 
 export default async function handler(req,res){
     await db.connect();
     const {method} = req;
     switch (method) {
         case 'GET':
-            getAllExercises(req,res)
+            getAllUsers(req,res)
             break;
         case 'POST':
-            addExercise(req,res)
+            addUser(req,res)
             break;
         
         default:
