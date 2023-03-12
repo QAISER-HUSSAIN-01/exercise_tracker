@@ -31,7 +31,7 @@ export const signIn = async (req, res) => {
     );
     return res
       .status(200)
-      .json({ success: true, message: "successfully logged in", token: token});
+      .json({ success: true, message: "successfully logged in", token: token, data:exist});
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }

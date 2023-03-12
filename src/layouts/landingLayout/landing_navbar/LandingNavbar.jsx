@@ -11,8 +11,8 @@ export default function LandingNavbar() {
     <StyledNavbar>
         <Logo onClick={gotoHome}>Fitness</Logo>
         <NavbarButtons>
-            <Button sx={{color:'black'}} variant='outlined' color='inherit' size='small' onClick={gotoSignup}>sign up</Button>
-            <Button sx={{color:'black'}} variant='outlined' color='inherit' size='small' onClick={gotoSignin}>sign in</Button>
+            <Button variant='outlined' color='inherit' size='small' onClick={gotoSignup}>sign up</Button>
+            <Button variant='outlined' color='inherit' size='small' onClick={gotoSignin}>sign in</Button>
         </NavbarButtons>
     </StyledNavbar>
   )

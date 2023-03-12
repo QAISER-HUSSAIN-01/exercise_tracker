@@ -3,7 +3,7 @@ import styles from './Sidebar.module.css'
 import { items } from './list';
 import Link from 'next/link';
 import { MdLogout } from 'react-icons/md';
-import { IconButton } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
 import { useRouter } from 'next/router';
 
@@ -19,7 +19,7 @@ function Sidebar({ hide, handleSidebarLinks }) {
   }
   return (
     <div className={styles.sidebar}>
-      <ul className={styles.unorderedList}>
+      <Typography component={'ul'} className={styles.unorderedList}>
         {items.map((item, index) => (
           <Link
             href={item.to}
@@ -27,12 +27,12 @@ function Sidebar({ hide, handleSidebarLinks }) {
             className={styles.link}
             onClick={handleSidebarLinks}
           >
-            <li>
-              <span style={{color:'#ffbf00'}}> {item.icon} </span> <span style={{ display: hide }}>{item.name} </span>
-            </li>
+            <Typography component={'li'}>
+              <Typography> {item.icon} </Typography> <Typography style={{ display: hide }}>{item.name} </Typography>
+            </Typography>
           </Link>
         ))}
-      </ul>
+      </Typography>
       <IconButton onClick={handelSignout}>
         <MdLogout />
       </IconButton>

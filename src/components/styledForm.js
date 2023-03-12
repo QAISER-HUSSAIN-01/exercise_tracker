@@ -24,7 +24,7 @@ export const FormContainer = styled(Box)(({theme})=>({
     boxShadow:'1px 1px 3px lightgrey,-1px -1px 3px lightgrey',
     borderRadius:'10px',
     margin:'40px auto 0 auto',
-    backgroundColor:'white',
+    // backgroundColor:'white',
     zIndex:1,
 }))
 

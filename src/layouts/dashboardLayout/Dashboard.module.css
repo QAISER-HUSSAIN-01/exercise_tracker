@@ -4,8 +4,8 @@
 }
 .navbarContainer{
     height: 8vh;
-    box-shadow: 1px 1px 3px gray;
-    border-bottom: 1px solid lightgrey;
+    box-shadow: 1px 1px 1px gray;
+    /* border-bottom: 1px solid lightgrey; */
 }
 .sectionContainer{
     display: flex;
