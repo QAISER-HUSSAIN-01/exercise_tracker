@@ -1,14 +1,15 @@
 import {deleteCookie,getCookie} from 'cookies-next'
+import { useRouter } from 'next/router';
 
 export default function useAuth(){
-
-    const logout = ()=>{
+    const router = useRouter();
+    const handleLogout = ()=>{
         deleteCookie('token',{maxAge:0})
         localStorage.removeItem('user')
-        return true
+        router.push('/signin');
     }
     const checkToken = ()=>{
         return getCookie('token')
     }
-    return {logout,checkToken}
+    return {handleLogout,checkToken}
 }

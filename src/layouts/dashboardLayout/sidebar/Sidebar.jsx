@@ -2,21 +2,12 @@ import React from 'react'
 import styles from './Sidebar.module.css'
 import { items } from './list';
 import Link from 'next/link';
-import { MdLogout } from 'react-icons/md';
-import { IconButton, Typography } from '@mui/material';
-import useAuth from '../../../hooks/useAuth';
-import { useRouter } from 'next/router';
+import { Typography } from '@mui/material';
+
 
 
 function Sidebar({ hide, handleSidebarLinks }) {
-  const router = useRouter();
-  const {logout} = useAuth()
-  const handelSignout = ()=>{
-    console.log(logout());
-   if(logout()){
-    router.push(`/signin`)
-   }
-  }
+  
   return (
     <div className={styles.sidebar}>
       <Typography component={'ul'} className={styles.unorderedList}>
@@ -33,9 +24,6 @@ function Sidebar({ hide, handleSidebarLinks }) {
           </Link>
         ))}
       </Typography>
-      <IconButton onClick={handelSignout}>
-        <MdLogout />
-      </IconButton>
     </div>
   )
 }
