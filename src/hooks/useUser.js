@@ -22,13 +22,13 @@ export default function useUser() {
             const response = await axios.post(`${url}api/signin`, data);
             if (response.data.success) {
                 setCookie("token", response.data.token, { maxAge: 60 * 60 * 24 * 30 });
-                await router.push(`/dashboard`);
                 localStorage.setItem('user',JSON.stringify(response.data.data))
                 successMessage(response.data.message);
             }
         } catch (error) {
             errorMessage(error.response.data.message);
         }
+        await router.push(`/dashboard`);
         setProgress(false);
     };
 
