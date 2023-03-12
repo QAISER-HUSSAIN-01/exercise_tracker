@@ -5,7 +5,8 @@ import DashboardLayout from "../../../src/layouts/dashboardLayout/DashboardLayou
 import ActivityCard from '../../../src/components/cards';
 import { IconButton } from '@mui/material';
 import { MdDelete, MdEdit, MdUpdate } from 'react-icons/md';
-
+import { useRouter } from 'next/router';
+import useNotify from '../../../src/hooks/useNotify';
 export async function getServerSideProps(context) {
   const { id } = context.params;
   const res = await axios.get(`${url}api/exercise/${id}`);
@@ -17,10 +18,21 @@ export async function getServerSideProps(context) {
 }
 
 export default function ActivityDetail({ detail }) {
+  const router = useRouter();
+  const {successMessage,errorMessage} = useNotify();
   const handleEdit = () => { }
   const handleDelete = async (id) => {
-    const res = await axios.delete(`${url}api/exercise/${id}`)
-    console.log(res);
+    try {
+      const {data} = await axios.delete(`${url}api/exercise/${id}`)
+      if(data.status){
+        successMessage('Activity Deleted')
+        router.push('/dashboard/activities')
+      }else{
+        errorMessage('Activity Not Deleted')
+      }
+    } catch (error) {
+      errorMessage(error.message)
+    }
   }
   const handleUpdate = () => { }
   return (
