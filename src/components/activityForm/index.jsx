@@ -44,7 +44,6 @@ export default function ActivityForm() {
       const response = await axios.post(`${url}api/exercise`, data);
       console.log(response);
       if (response.data.success) {
-        
         successMessage(response.data.message);
         await router.push(`/dashboard/activities`);
         setData({

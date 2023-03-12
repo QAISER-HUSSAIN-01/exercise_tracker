@@ -3,7 +3,6 @@ import React from 'react'
 import {CardContainer, CardHeader, CardCaption, CardBody, CardDate } from './styledCard';
 export default function ActivityCard({card}) {
     return (
-        
             <CardContainer>
                 <CardHeader>
                     <Typography variant='h5'>{card.name}</Typography>

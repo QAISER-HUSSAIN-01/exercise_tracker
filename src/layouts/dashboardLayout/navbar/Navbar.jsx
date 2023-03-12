@@ -8,14 +8,16 @@ function Navbar({ handleSidebar }) {
   const [user, setUser] = useState({ username: '', email: '' });
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const {gotoLandingPage,gotoProfile,gotoSetting,logout} = useRoutes(setAnchorEl)
+  const { gotoLandingPage, gotoProfile, gotoSetting, logout } = useRoutes(setAnchorEl)
 
-  const handleClose = ()=>{setAnchorEl(null)}  
-  const handleClick = (event) => {setAnchorEl(event.currentTarget)};
+  const handleClose = () => { setAnchorEl(null) }
+  const handleClick = (event) => { setAnchorEl(event.currentTarget) };
 
   useEffect(() => {
-    const detail = JSON.parse(localStorage.getItem('user'));
-    setUser({username: detail.username, email: detail.email});
+    setTimeout(() => {
+      const detail = JSON.parse(localStorage.getItem('user'));
+      setUser({ username: detail.username, email: detail.email });
+    }, 2000)
   }, [])
 
   return (
@@ -45,7 +47,7 @@ function Navbar({ handleSidebar }) {
             'aria-labelledby': 'basic-button',
           }}
         >
-          <Box sx={{ padding: '10px 20px',display:'flex',gap:'20px',alignItems:'center' }}>
+          <Box sx={{ padding: '10px 20px', display: 'flex', gap: '20px', alignItems: 'center' }}>
             <Avatar sx={{ width: '30px', height: '30px' }}>{user.username[0]}</Avatar>
             <Box>
               <Typography variant='body1'>{user.username}</Typography>
