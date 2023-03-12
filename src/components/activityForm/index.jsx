@@ -21,16 +21,16 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { url } from "../../utils/url";
 
-export default function ActivityForm() {
+export default function ActivityForm({exercise}) {
   const [progress, setProgress] = useState(false);
   const router = useRouter();
   const { successMessage, errorMessage } = useNotify();
   const [data, setData] = useState({
-    name: "",
-    activityType: "",
-    duration: Number,
-    date: "",
-    description: "",
+    name: exercise ?  exercise.name : "",
+    activityType: exercise ?  exercise.activityType : "",
+    duration: exercise ?  exercise.duration : Number,
+    date: exercise ?  exercise.date : "",
+    description: exercise ?  exercise.description : "",
   });
 
   const handleChange = (e) => {
@@ -46,22 +46,46 @@ export default function ActivityForm() {
       if (response.data.success) {
         successMessage(response.data.message);
         await router.push(`/dashboard/activities`);
-        setData({
-          name: "",
-          type: "",
-          duration: Number,
-          date: "",
-          description: "",
-        });
+        // setData({
+        //   name: "",
+        //   type: "",
+        //   duration: Number,
+        //   date: "",
+        //   description: "",
+        // });
       }
     } catch (error) {
       errorMessage(error.response.data.message);
     }
     setProgress(false);
   };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      setProgress(true);
+      const response = await axios.patch(`${url}api/exercise/${exercise._id}`,data);
+      console.log(response);
+      if (response.data.success) {
+        // setData({
+        //   name: "",
+        //   type: "",
+        //   duration: Number,
+        //   date: "",
+        //   description: "",
+        // });
+        successMessage(response.data.message);
+        await router.push(`/dashboard/activities`);
+      }
+    } catch (error) {
+      errorMessage(error.response.data.message);
+    }
+    setProgress(false);
+  };
+
   return (
     <FormContainer>
-      <FormHeading>Add Activity</FormHeading>
+      <FormHeading>{exercise ?  "Update Activity" : "Add Activity"}</FormHeading>
       <FormFields>
         <FieldsPair>
           <TextField
@@ -143,8 +167,8 @@ export default function ActivityForm() {
         {progress ? (
           <CircularProgress size={20} />
         ) : (
-          <Button variant="contained" onClick={handleSubmit}>
-            Add
+          <Button variant="contained" onClick={exercise?handleUpdate:handleSubmit}>
+            {exercise ? "Update":"Add"}
           </Button>
         )}
       </FormActions>

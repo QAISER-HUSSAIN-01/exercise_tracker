@@ -20,11 +20,13 @@ export async function getServerSideProps(context) {
 export default function ActivityDetail({ detail }) {
   const router = useRouter();
   const {successMessage,errorMessage} = useNotify();
-  const handleEdit = () => { }
+  const handleEdit = (id) => { 
+    router.push(`/dashboard/addnew/${id}`)
+  }
   const handleDelete = async (id) => {
     try {
       const {data} = await axios.delete(`${url}api/exercise/${id}`)
-      if(data.status){
+      if(data.success){
         successMessage('Activity Deleted')
         router.push('/dashboard/activities')
       }else{
@@ -34,7 +36,6 @@ export default function ActivityDetail({ detail }) {
       errorMessage(error.message)
     }
   }
-  const handleUpdate = () => { }
   return (
     <div>
       <div>ActivityDetail</div>
@@ -44,7 +45,6 @@ export default function ActivityDetail({ detail }) {
           <div>
             <IconButton onClick={() => handleEdit(detail._id)}><MdEdit /></IconButton>
             <IconButton onClick={() => handleDelete(detail._id)}><MdDelete /></IconButton>
-            <IconButton onClick={() => handleUpdate(detail._id)}><MdUpdate /></IconButton>
           </div>
           <ActivityCard card={detail} />
         </>

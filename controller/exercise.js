@@ -61,15 +61,15 @@ export const deleteExercise = async (req, res) => {
   const { id } = req.query;
   try {
     const exercise = await Exercise.findByIdAndDelete(id);
-    // if (!exercise) { return res.status(404).json({ status: false, message: 'exercise not deleted' }) }
-    return res.status(200).json({ status: true, message: 'exercise deleted', data: exercise });
-  } catch (err) { res.status(500).json({ status: false, message: err.name }) }
+    if (!exercise) { return res.status(404).json({ success: false, message: 'exercise not deleted' }) }
+    return res.status(200).json({ success: true, message: 'exercise deleted', data: exercise });
+  } catch (err) { res.status(500).json({ success: false, message: err.name }) }
 };
 export const updateExercise = async (req, res) => {
   const { id } = req.query;
   try {
-    const exercise = await Exercise.findByIdAndUpdate(id, req.body, { new: true });
-    // if (!exercise) { return res.status(404).json({ status: false, message: 'exercise not updated' }) }
-    return res.status(200).json({ status: true, message: 'exercise updated', data: exercise });
-  } catch (err) { res.status(500).json({ status: false, message: err.name }) }
+    const updated = await Exercise.findByIdAndUpdate(id, req.body, { new: true });
+    if (!updated) { return res.status(404).json({ success: false, message: 'exercise not updated' }) }
+    return res.status(200).json({ success: true, message: 'exercise updated', data: updated });
+  } catch (err) { res.status(500).json({ success: false, message: err.name }) }
 };
