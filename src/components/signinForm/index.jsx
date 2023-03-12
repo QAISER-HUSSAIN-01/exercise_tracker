@@ -14,41 +14,11 @@ import {
 } from "@mui/material";
 import { MdKey, MdMail } from "react-icons/md";
 import Link from "next/link";
-import useNotify from "../../hooks/useNotify";
-import axios from "axios";
-import { useCookies } from "react-cookie";
-import { useRouter } from "next/router";
-import { url } from "../../utils/url";
+import useUser from "../../hooks/useUser";
 
 export default function SigninForm() {
-  const [progress, setProgress] = useState(false);
-  const { successMessage, errorMessage } = useNotify();
-  const [allCookies, setCookie] = useCookies();
-  const router = useRouter();
-
-  const [data, setData] = useState({ email: "", password: "" });
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setData({ ...data, [e.target.name]: e.target.value.toLowerCase() });
-  };
-
-  const handleSubmit = async () => {
-    try {
-      setProgress(true);
-      const response = await axios.post(`${url}api/signin`, data);
-      if (response.data.success) {
-        setData({ email: "", password: "" });
-        setCookie("token", response.data.token, { maxAge: 60 * 60 * 24 * 30 });
-        successMessage(response.data.message);
-        await router.push(`/dashboard`);
-      }
-    } catch (error) {
-      errorMessage(error.response.data.message);
-    }
-    setProgress(false);
-  };
-
+  const {handleChange,handleSubmit,progress,data} = useUser();
+  
   return (
     <FormContainer component={"form"}>
       <FormHeading>SIGN IN</FormHeading>

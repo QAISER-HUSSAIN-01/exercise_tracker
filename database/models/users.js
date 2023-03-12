@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import Exercise from "./exercies";
+// import Exercise from "./exercies";
 
 const userSchema = mongoose.Schema({
     username:{type:String,required:true},
     email:{type:String,required:true},
     password:{type:String,required:true},
-    exercises:[{type:mongoose.Schema.Types.ObjectId, ref:Exercise}]
+    // exercises:[{type:mongoose.Schema.Types.ObjectId, ref:Exercise}]
 }
 ,
 {

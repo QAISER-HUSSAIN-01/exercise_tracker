@@ -1,6 +1,8 @@
 import mongoose from 'mongoose'
+import User from './users';
 
 const exerciseSchema = mongoose.Schema({
+    userId:{type:mongoose.Schema.Types.ObjectId, required:true},
     name:{type:String,required:true},
     description:{type:String,required:true},
     activityType:{type:String,required:true},

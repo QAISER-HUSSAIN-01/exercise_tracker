@@ -5,8 +5,10 @@ import { url } from "../../../src/utils/url";
 import axios from "axios";
 import { Box } from "@mui/material";
 
-export async function getServerSideProps() {
-  const response = await axios.get(`${url}api/exercise`);
+export async function getServerSideProps({req,res}) {
+  const token = req.cookies.token;
+  console.log('serverside cookies: ', token);
+  const response = await axios.get(`${url}api/exercise`,{params:{token:token}});
   const cards = response.data.data || [];
   return {
     props: {
@@ -15,9 +17,10 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Activities({ cards }) {
+export default function Activities({cards}) {
+
   const CardsRender = () => {
-    return cards[0] ? cards.map((item, index) => <ActivityCard card={item} key={index} />) : 'no activities';
+    return cards[0] ? cards.map((item, index) => <ActivityCard card={item} key={index} />) : 'No Activities Found Yet';
   };
   return (
     <Box sx={{display:'flex',flexWrap:'wrap', gap:'10px',justifyContent:'center',padding:'20px 0px'}}>
