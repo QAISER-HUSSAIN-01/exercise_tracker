@@ -1,6 +1,7 @@
 import { styled, Box, Typography, Card } from "@mui/material";
 
 export const CardContainer = styled(Card)(({ theme }) => ({
+  position:'relative',
   width: "20%",
   minWidth: "300px",
   padding: "20px",
@@ -19,9 +20,18 @@ export const CardContainer = styled(Card)(({ theme }) => ({
 //   },
 }));
 
+export const Actions = styled(Box)(({ theme }) => ({
+  // position:'absolute',
+  // top:'-3px',
+  // left:8,
+  // zIndex:'999'
+}));
+
+
 export const CardHeader = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
+  marginTop:'10px'
 }));
 
 export const CardCaption = styled(Box)(({ theme }) => ({
@@ -31,6 +41,12 @@ export const CardCaption = styled(Box)(({ theme }) => ({
 
 export const CardBody = styled(Typography)(({ theme }) => ({
   textAlign: "justify",
+}));
+
+export const CardFooter = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems:'center',
 }));
 
 export const CardDate = styled(Typography)(({ theme }) => ({

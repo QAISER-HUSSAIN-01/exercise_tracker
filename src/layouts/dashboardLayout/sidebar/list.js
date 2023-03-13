@@ -15,11 +15,11 @@ export const items = [
         name:'Add Activity',
         to:'/dashboard/addnew'
     },
-    {
-        icon:<MdCalendarMonth />,
-        name:'Calendar',
-        to:'/dashboard/calendar'
-    },
+    // {
+    //     icon:<MdCalendarMonth />,
+    //     name:'Calendar',
+    //     to:'/dashboard/calendar'
+    // },
     {
         icon:<MdPerson/>,
         name:'Profile',

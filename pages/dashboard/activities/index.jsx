@@ -21,7 +21,8 @@ export async function getServerSideProps({req,res}) {
 export default function Activities({cards}) {
 
   const CardsRender = () => {
-    return cards[0] ? cards.map((item, index) => <Link href={`/dashboard/activities/${item._id}`} key={index}> <ActivityCard card={item} key={index} /> </Link>) : 'No Activities Found Yet';
+    // return cards[0] ? cards.map((item, index) => <Link href={`/dashboard/activities/${item._id}`} key={index}> <ActivityCard card={item} key={index} /> </Link>) : 'No Activities Found Yet';
+    return cards[0] ? cards.map((item, index) =>  <ActivityCard card={item} key={index} /> ) : 'No Activities Found Yet';
   };
   return (
     <Box sx={{display:'flex',flexWrap:'wrap', gap:'10px',justifyContent:'center',padding:'20px 0px'}}>

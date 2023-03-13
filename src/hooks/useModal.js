@@ -9,7 +9,7 @@ export default function useRoutes() {
     console.log(postId);
   const [open, setOpen] = useState(false);
     const {successMessage,errorMessage} = useNotify();
-    const handleOpen = (id) => {setOpen(true); setPostId(id);}
+    const handleOpen = (id) => {setOpen(true); setPostId(id); console.log('open click');}
     const handleDelete = async () => {
         try {
             const { data } = await axios.delete(`${url}api/exercise/${postId}`)
