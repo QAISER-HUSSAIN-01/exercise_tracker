@@ -28,8 +28,8 @@ export default function useUser() {
         } catch (error) {
             errorMessage(error.response.data.message);
         }
-        await router.push(`/dashboard`);
         setProgress(false);
+      return  await router.push(`/dashboard`);
     };
 
     
