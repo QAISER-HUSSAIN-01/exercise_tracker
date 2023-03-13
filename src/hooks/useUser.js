@@ -25,11 +25,12 @@ export default function useUser() {
                 localStorage.setItem('user',JSON.stringify(response.data.data))
                 successMessage(response.data.message);
             }
+            setProgress(false);
+            await router.push(`/dashboard`);
         } catch (error) {
             errorMessage(error.response.data.message);
         }
-        setProgress(false);
-      return  await router.push(`/dashboard`);
+       
     };
 
     
