@@ -11,6 +11,6 @@ export function middleware(req: NextRequest) {
   if (token === undefined) {
     return NextResponse.rewrite(new URL('/signin', req.url));
   } else {
-    return NextResponse.next();
+    return NextResponse.rewrite(new URL('/dashboard', req.url));
   }
 }
