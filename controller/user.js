@@ -1,4 +1,5 @@
 import User from "../database/models/users";
+import Exercise from "../database/models/exercies";
 import bcrypt from 'bcrypt'
 export const getAllUsers = async (req, res) => {
   try {
@@ -45,7 +46,9 @@ export const deleteUser = async (req, res) => {
   const { id } = req.query;
   try {
     const user = await User.findByIdAndDelete(id);
-    if (!user) { return res.status(404).json({ status: false, message: 'user not found' }) }
+    if (!user) { return res.status(404).json({ status: false, message: 'user not found' })}
+    const exerciseDeleted = await Exercise.deleteMany({userId:id})
+    console.log(exerciseDeleted);
     return res.status(200).json({ success: true, message: 'user deleted' });
   } catch (err) { res.status(500).json({ success: false, message: err.message }) }
 };
