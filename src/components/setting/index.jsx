@@ -25,9 +25,10 @@ export default function SettingComponent() {
     setUser({id:_id});
   }, [])
   return (
-    <div>
+    <Box sx={{p:2}}>
+      <Typography variant='h5'>Setting</Typography>
       <AccountContainer>
-        <Typography>yoy want to delet your account ?</Typography>
+        <Typography>Delete your account here:</Typography>
         <AccountAction><Button onClick={() => handleOpen(user.id)} variant='contained' color='error'>Delete</Button></AccountAction>
       </AccountContainer>
 
@@ -50,6 +51,6 @@ export default function SettingComponent() {
         </Modal>
       </div>
       {/* <DeleteModal handleClose={handleClose} open={open} handlDelete={userDelete}/> */}
-    </div>
+    </Box>
   )
 }

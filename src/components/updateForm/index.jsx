@@ -6,8 +6,9 @@ import Link from 'next/link'
 import useNotify from '../../hooks/useNotify';
 import axios from 'axios'
 import {url} from '../../utils/url'
-
+import {useRouter} from 'next/router'
 export default function UpdateForm() {
+  const router = useRouter()
   const {successMessage,errorMessage} = useNotify();
   const [user,setUser] = useState({id:'',username: '', email: "", password:'',newpassword:''});
   const handleChange = (e)=>{
