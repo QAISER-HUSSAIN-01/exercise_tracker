@@ -10,12 +10,12 @@ export function middleware(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
   console.log("next url", req.nextUrl.origin);
   console.log("url", req.url);
-  if (!token) {
-    return NextResponse.rewrite(new URL("/signin", req.url));
-  }
-  return NextResponse.rewrite(req.url);
-  // if (token === undefined) {
-  //   return NextResponse.redirect(`${url}signin`);
+  // if (!token) {
+  //   return NextResponse.rewrite(new URL("/signin", req.url));
   // }
-  // return NextResponse.next()
+  // return NextResponse.rewrite(req.url);
+  if (!token) {
+    return NextResponse.redirect(`${url}signin`);
+  }
+  return NextResponse.next()
 }
