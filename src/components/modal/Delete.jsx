@@ -16,30 +16,26 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal() {
-  const [open, setOpen] = React.useState(true);
-
-  const {handleClose,handleDelete,handleOpen} = useModal();
-  console.log(open);
+export default function DeleteModal({open,handleClose,handleDelete}) {
 
   return (
     <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Are you sure you want to delete activity ? 
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <Button variant='outlined' color='info'>Cancel</Button>
-            <Button variant='contained' color='danger' onClick={handleDelete}>Delete</Button>
-          </Typography>
-        </Box>
-      </Modal>
-    </div>
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <Box sx={style}>
+        <Typography id="modal-modal-title" variant="h6" component="h2">
+          Are you sure you want to delete ? 
+        </Typography>
+        <Typography id="modal-modal-description" sx={{ mt: 2, display:'flex',gap:'20px',justifyContent:'end' }}>
+          <Button variant='outlined' color='info' onClick={handleClose}> Cancel </Button>
+          <Button variant='contained' color='error' onClick={handleDelete}>Delete</Button>
+        </Typography>
+      </Box>
+    </Modal>
+  </div>
   );
 }

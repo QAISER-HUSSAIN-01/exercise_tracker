@@ -1,9 +1,10 @@
 import React from 'react'
+import SettingComponent from '../../../src/components/setting'
 import DashboardLayout from '../../../src/layouts/dashboardLayout/DashboardLayout'
 
 export default function Setting() {
   return (
-    <div>Setting</div>
+    <SettingComponent />
   )
 }
 

@@ -46,8 +46,8 @@ export const deleteUser = async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(id);
         if (!user) { return res.status(404).json({ status: false, message: 'user not found'}) }
-        return res.status(200).json({ status: true, message: 'user deleted', data: user });
-    } catch (err) { res.status(500).json({ status: false, message: err.name }) }
+        return res.status(200).json({ success: true, message: 'user deleted'});
+    } catch (err) { res.status(500).json({ success: false, message: err.name }) }
 };
 
 export const updateUser = async (req, res) => {
@@ -55,6 +55,6 @@ export const updateUser = async (req, res) => {
     try {
         const user = await User.findByIdAndUpdate(id, req.body, { new: true });
         if (!user) { return res.status(404).json({ status: false, message: 'user not updated'})}
-        return res.status(200).json({ status: true, message: 'user updated', data: user });
-    } catch (err) { res.status(500).json({ status: false, message: err.name }) }
+        return res.status(200).json({ success: true, message: 'user updated', data: user });
+    } catch (err) { res.status(500).json({ success: false, message: err.name }) }
 };

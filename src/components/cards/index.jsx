@@ -12,6 +12,7 @@ import {
   Actions,
   CardFooter
 } from "./styledCard";
+import DeleteModal from "../modal/Delete";
 
 const style = {
     position: 'absolute',
@@ -27,7 +28,7 @@ const style = {
 
 export default function ActivityCard({ card }) {
   const router = useRouter();
-  const {handleDelete,handleOpen,handleClose,open} = useModal();
+  const {handleActivityDelete,handleOpen,handleClose,open} = useModal();
   const handleEdit = (id) => {router.push(`/dashboard/addnew/${id}`)}
 
   return (
@@ -74,6 +75,9 @@ export default function ActivityCard({ card }) {
       </CardDate>
       </CardFooter>
     </CardContainer>
+    {/* <div>
+    <DeleteModal handleClose={handleClose} open={open} handlDelete={handleActivityDelete}/>
+    </div> */}
     <div>
     <Modal
       open={open}
@@ -87,7 +91,7 @@ export default function ActivityCard({ card }) {
         </Typography>
         <Typography id="modal-modal-description" sx={{ mt: 2, display:'flex',gap:'20px',justifyContent:'end' }}>
           <Button variant='outlined' color='info' onClick={handleClose}> Cancel </Button>
-          <Button variant='contained' color='error' onClick={handleDelete}>Delete</Button>
+          <Button variant='contained' color='error' onClick={handleActivityDelete}>Delete</Button>
         </Typography>
       </Box>
     </Modal>
