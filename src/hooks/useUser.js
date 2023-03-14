@@ -25,11 +25,11 @@ export default function useUser() {
         setCookie("token", res.token, { maxAge: 60 * 60 * 24 * 30 });
         localStorage.setItem("user", JSON.stringify(res.data));
         successMessage(res.message);
-      }else{
-      errorMessage(res.message);
+      } else {
+        errorMessage(res.message);
       }
-    //   setProgress(false);
-    //   router.replace("/dashboard");
+      //   setProgress(false);
+      //   router.replace("/dashboard");
     } catch (error) {
       errorMessage(error.message);
     }
