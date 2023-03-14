@@ -14,7 +14,6 @@ export default function SignupForm() {
   const {successMessage,errorMessage} = useNotify()
   const [data,setData] = useState({username:'',email:'',password:''});
   const router = useRouter();
-  
   const handleChange = (e)=>{
     e.preventDefault();
     setData({...data,[e.target.name]:e.target.value.toLowerCase()});
