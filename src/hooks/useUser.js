@@ -25,7 +25,6 @@ export default function useUser() {
         setCookie("token", res.token, { maxAge: 60 * 60 * 24 * 30 });
         localStorage.setItem("user", JSON.stringify(res.data));
         successMessage(res.message);
-        router.replace("/dashboard");
       }else{
       errorMessage(res.message);
       }
@@ -35,6 +34,7 @@ export default function useUser() {
       errorMessage(error.message);
     }
     setProgress(false);
+    router.replace(`${url}/dashboard`);
   };
 
   // useEffect(()=>{
