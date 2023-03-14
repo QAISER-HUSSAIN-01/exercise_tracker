@@ -8,6 +8,7 @@ export const CardContainer = styled(Card)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: "15px",
+  borderRadius:'10px',
   ":hover": { boxShadow: "2px 2px 5px black" },
 //   [theme.breakpoints.down("md")]: {
 //     width: "25%",
@@ -51,4 +52,26 @@ export const CardFooter = styled(Box)(({ theme }) => ({
 
 export const CardDate = styled(Typography)(({ theme }) => ({
   textAlign: "end",
+}));
+
+
+export const DetailContainer = styled(Box)(({ theme }) => ({
+  position:'relative',
+  width: "100%",
+  height:'80vh',
+  minWidth: "300px",
+  padding: "20px",
+  display: "flex",
+  justifyContent:'center'
+}));
+
+export const CardDetail = styled(Box)(({ theme }) => ({
+  width:'30rem',
+  height:'max-content',
+  padding: "20px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "15px",
+  boxShadow: "2px 2px 5px gray",
+  borderRadius:'10px'
 }));

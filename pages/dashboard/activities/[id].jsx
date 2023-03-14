@@ -2,7 +2,8 @@ import axios from 'axios';
 import React from 'react';
 import { url } from '../../../src/utils/url';
 import DashboardLayout from "../../../src/layouts/dashboardLayout/DashboardLayout";
-import ActivityCard from '../../../src/components/cards';
+import Detail from '../../../src/components/cards/detail';
+import { Typography } from '@mui/material';
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
@@ -17,10 +18,9 @@ export default function ActivityDetail({ detail }) {
 
   return (
     <div>
-      <div>ActivityDetail</div>
-
+      <Typography component={'div'} variant='h5' padding={2}>ActivityDetail</Typography>
       {detail ?  
-          <ActivityCard card={detail} />
+          <Detail card={detail} />
         :
         "not found"
       } 
