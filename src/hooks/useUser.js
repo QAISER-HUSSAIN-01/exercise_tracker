@@ -12,11 +12,11 @@ export default function useUser() {
     const [data, setData] = useState({ email: "", password: "" });
 
     const handleChange = (e) => {
-        e.preventDefault();
         setData({ ...data, [e.target.name]: e.target.value.toLowerCase() });
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
             setProgress(true);
             const response = await axios.post(`${url}api/signin`, data);
@@ -31,8 +31,8 @@ export default function useUser() {
         } catch (error) {
             errorMessage(error.response.data.message);
         }
-        await router.push('/dashboard')
         setProgress(false);
+        await router.push('/dashboard')
     };
 
     

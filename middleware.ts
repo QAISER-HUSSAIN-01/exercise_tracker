@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
-import { url } from "./src/utils/url";
+// import { url } from "./src/utils/url";
 
 export const config = {
   matcher: ["/dashboard/:path*"],
@@ -11,6 +11,7 @@ export function middleware(req: NextRequest) {
   if (token === undefined) {
     return NextResponse.rewrite(new URL('/signin', req.url));
   } else {
-    return NextResponse.next();
+     NextResponse.next();
   }
+  return NextResponse.next();
 }
