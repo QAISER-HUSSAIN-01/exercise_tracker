@@ -3,13 +3,14 @@ import styles from './Navbar.module.css';
 import { MdLogout, MdMenu, MdPerson, MdSettings } from 'react-icons/md';
 import { IconButton, styled, Typography, Avatar, Menu, MenuItem, Box } from '@mui/material';
 import useRoutes from '../../../hooks/useRoutes';
+import useUser from '../../../hooks/useUser';
 
 function Navbar({ handleSidebar }) {
   const [user, setUser] = useState({ username: '', email: '' });
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const { gotoLandingPage, gotoProfile, gotoSetting, logout } = useRoutes(setAnchorEl)
-
+  // const {userDetail} = useUser();
   const handleClose = () => { setAnchorEl(null) }
   const handleClick = (event) => { setAnchorEl(event.currentTarget) };
 
@@ -17,7 +18,7 @@ function Navbar({ handleSidebar }) {
     setTimeout(() => {
       const detail = JSON.parse(localStorage.getItem('user'));
       setUser({ username: detail.username, email: detail.email });
-    }, 2000)
+    }, 1000)
   }, [])
 
   return (

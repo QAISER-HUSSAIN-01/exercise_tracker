@@ -10,6 +10,7 @@ export default function useUser() {
     const { successMessage, errorMessage } = useNotify();
     const [progress, setProgress] = useState(false);
     const [data, setData] = useState({ email: "", password: "" });
+    // const [userDetail,setUserDetail] = useState({id:'',username: '', email: '' });
 
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value.toLowerCase() });
@@ -17,24 +18,36 @@ export default function useUser() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('start');
         try {
+        console.log('enter in try');
             setProgress(true);
-            const response = await axios.post(`${url}api/signin`, data);
-            if (response.data.success) {
-                setCookie("token", response.data.token, { maxAge: 60 * 60 * 24 * 30 });
-                localStorage.setItem('user',JSON.stringify(response.data.data))
-                successMessage(response.data.message);
-                router.replace('/dashboard')      
+            const {data:res} = await axios.post(`${url}api/signin`, data);
+        console.log('data recivede');
+            if (res.success) {
+                setCookie("token", res.token, { maxAge: 60 * 60 * 24 * 30 });
+                // setUserDetail({id:data.data._id,username:data.data.username,email:data.data.email})
+                localStorage.setItem('user',JSON.stringify(res.data))
+                successMessage(res.message);
+                await router.push('/dashboard');   
             }
             else{
-            errorMessage(response.data.message);
+            errorMessage(res.message);
             }
         } catch (error) {
-            errorMessage(error.response.data.message);
+            console.log(error);
+            errorMessage(error.message);
         }
         setProgress(false);
     };
 
+    // useEffect(()=>{
+    //     setTimeout(()=>{
+    //         const detail = JSON.parse(localStorage.getItem('user'));
+    //         setUserDetail(detail);
+    //     },2000)
+    // },[])
+
     
-    return { handleChange, handleSubmit, progress, data }
+    return { handleChange, handleSubmit, progress, data}
 }

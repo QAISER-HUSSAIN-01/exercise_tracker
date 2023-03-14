@@ -7,15 +7,17 @@ import useAuth from '../../hooks/useAuth';
 import { useRouter } from 'next/router';
 
 function DashboardLayout({ children }) {
-  const [handleSidebar,handleSidebarLinks,left,hide] = useLayout();
   const {checkToken} = useAuth();
-  const router = useRouter();
   const token = checkToken();
+  const router = useRouter();
+  // !token ? router.push('/signin'):'';
+  const [handleSidebar,handleSidebarLinks,left,hide] = useLayout();
+
+
   useEffect(() => {
     !token ? router.push('/signin'):''
   }, [])
   
-
   return (
     <div className={styles.layout}>
       <div className={styles.navbarContainer}>
