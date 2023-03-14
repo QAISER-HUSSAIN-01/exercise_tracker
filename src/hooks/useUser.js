@@ -18,24 +18,20 @@ export default function useUser() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('start');
         try {
-        console.log('enter in try');
             setProgress(true);
             const {data:res} = await axios.post(`${url}api/signin`, data);
-        console.log('data recivede');
             if (res.success) {
                 setCookie("token", res.token, { maxAge: 60 * 60 * 24 * 30 });
                 // setUserDetail({id:data.data._id,username:data.data.username,email:data.data.email})
                 localStorage.setItem('user',JSON.stringify(res.data))
                 successMessage(res.message);
-                await router.push('/dashboard');   
+                await router.replace('/dashboard');   
             }
             else{
             errorMessage(res.message);
             }
         } catch (error) {
-            console.log(error);
             errorMessage(error.message);
         }
         setProgress(false);
