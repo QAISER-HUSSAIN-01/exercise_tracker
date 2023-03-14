@@ -17,6 +17,6 @@ export function middleware(req: NextRequest) {
   if (token) {
     return NextResponse.next();
   }else{
-    return NextResponse.redirect(`${url}signin`);
+    return NextResponse.redirect(new URL('/signin',req.url));
   }
 }

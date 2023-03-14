@@ -34,7 +34,7 @@ export default function useUser() {
       errorMessage(error.message);
     }
     setProgress(false);
-    await router.push(`${url}/dashboard`);
+    await router.push(`/dashboard`);
   };
 
   // useEffect(()=>{
