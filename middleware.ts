@@ -16,7 +16,7 @@ export function middleware(req: NextRequest) {
   } else {
      NextResponse.next();
   }
-  NextResponse.next();
+  return NextResponse.next();
 }
 
 
