@@ -10,13 +10,13 @@ export function middleware(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
   // console.log('next url', req.nextUrl.origin);
   // console.log('url', req.url);
-  
+
   if (token == undefined) {
     return NextResponse.redirect(`${url}signin`);
   } else {
-     NextResponse.next();
+    if (token) {
+      return NextResponse.next();
+    }
+    return NextResponse.next();
   }
-  return NextResponse.next();
 }
-
-
