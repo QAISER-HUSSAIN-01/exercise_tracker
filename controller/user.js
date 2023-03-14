@@ -53,26 +53,28 @@ export const deleteUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   const { id } = req.query;
   const { username, email, password, newpassword } = req.body;
- console.log(req.body);
   if (!username && !email && !password) {
     return res
       .status(404)
       .json({ success: false, message: "please fill all fields" });
   }
   try {
-    const exist = User.findById(id);
+    const exist = await User.findById(id);
     console.log(exist);
     if (!exist) { return res.status(404).json({ status: false, message: 'user not found' }) }
-    const compared = bcrypt.compare(password, exist.password)
+    const compared = await bcrypt.compare(password, exist.password)
     if (!compared) { return res.status(400).json({ status: false, message: 'password is incorrect' }) }
     if (newpassword) {
       const newEncrypted = await bcrypt.hash(newpassword,10);
       const user = await User.findByIdAndUpdate(id, { username: username, email: email, password: newEncrypted }, { new: true });
+      console.log('user with new password', user);
       if (!user) { return res.status(404).json({ status: false, message: 'user not updated' }) }
       return res.status(200).json({ success: true, message: 'user updated', data: user });
     }
 
     const user = await User.findByIdAndUpdate(id, {username: username, email: email} , { new: true });
+    console.log('user with old password', user);
+
     if (!user) { return res.status(404).json({ status: false, message: 'user not updated' }) }
     return res.status(200).json({ success: true, message: 'user updated', data: user });
     

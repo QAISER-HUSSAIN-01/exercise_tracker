@@ -13,7 +13,5 @@ export function middleware(req: NextRequest) {
     return NextResponse.rewrite(new URL('/signin', req.url));
   } else {
     return NextResponse.rewrite(new URL(req.url, req.url));
-    //  NextResponse.next();
   }
-  // return NextResponse.next();
 }
