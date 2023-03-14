@@ -14,8 +14,9 @@ export function middleware(req: NextRequest) {
   if (token === undefined) {
     return NextResponse.redirect(`${url}signin`);
   } else {
-     return NextResponse.next();
+     NextResponse.next();
   }
+  NextResponse.next();
 }
 
 
