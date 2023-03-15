@@ -5,11 +5,16 @@ import styles from "./Banner.module.css";
 import { useRouter } from "next/router";
 import banner from "../../../public/banner6.png";
 import Image from "next/image";
+import {getCookie} from 'cookies-next'
 
 export default function Banner() {
   const router = useRouter();
+  const token = getCookie('token');
   const gotoDashboard = () => {
     router.push("/dashboard");
+  };
+  const gotoSignin = () => {
+    router.push("/signin");
   };
   return (
     <BannerBox>
@@ -25,7 +30,7 @@ export default function Banner() {
           className={styles.getstarted}
           variant="contained"
           color="warning"
-          onClick={gotoDashboard}
+          onClick={token ? gotoDashboard : gotoSignin}
         >
           Get Started
         </Button>
