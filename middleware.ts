@@ -13,8 +13,6 @@ export function middleware(req: NextRequest) {
     url.pathname = '/signin';
     return NextResponse.redirect(url);
   }
-  console.log('token found');
-  console.log('redirect url',req.nextUrl.pathname);  
+  NextResponse.redirect(url);
   return NextResponse.next();
- 
 }
