@@ -39,9 +39,9 @@ export default function SignupForm() {
     <FormContainer>
       <FormHeading>SIGN UP</FormHeading>
       <FormFields>
-      <TextField fullWidth placeholder='Username' name='username' value={data.username} onChange={handleChange} InputProps={{ endAdornment: <InputAdornment position='end'><MdPerson /></InputAdornment> }} />
-        <TextField fullWidth placeholder='Email' name='email' value={data.email} onChange={handleChange} InputProps={{ endAdornment: <InputAdornment position='end'><MdMail /></InputAdornment> }} />
-        <TextField fullWidth placeholder='Password' name='password' value={data.password} onChange={handleChange} InputProps={{ endAdornment: <InputAdornment position='end'><MdKey /></InputAdornment> }} />
+      <TextField fullWidth type='text' placeholder='Username' name='username' value={data.username} onChange={handleChange} InputProps={{ endAdornment: <InputAdornment position='end'><MdPerson /></InputAdornment> }} />
+        <TextField fullWidth type='email' placeholder='Email' name='email' value={data.email} onChange={handleChange} InputProps={{ endAdornment: <InputAdornment position='end'><MdMail /></InputAdornment> }} />
+        <TextField fullWidth type='password' placeholder='Password' name='password' value={data.password} onChange={handleChange} InputProps={{ endAdornment: <InputAdornment position='end'><MdKey /></InputAdornment> }} />
       </FormFields>
       <FormActions>
         <ActionMessage variant='caption'>Already have an account? please <Link href={'/signin'} style={{ color: 'blue', borderBottom: '1px solid blue' }}>signin</Link>  </ActionMessage>

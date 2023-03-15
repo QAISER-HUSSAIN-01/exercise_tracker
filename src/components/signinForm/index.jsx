@@ -24,6 +24,7 @@ export default function SigninForm() {
       <FormFields>
         <TextField
           fullWidth
+          type='email'
           placeholder="Email"
           name="email"
           value={data.email}
@@ -38,6 +39,7 @@ export default function SigninForm() {
         />
         <TextField
           fullWidth
+          type='password'
           placeholder="Password"
           name="password"
           value={data.password}

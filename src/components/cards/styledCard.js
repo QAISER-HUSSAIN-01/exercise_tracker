@@ -4,6 +4,8 @@ export const CardContainer = styled(Card)(({ theme }) => ({
   position:'relative',
   width: "20%",
   minWidth: "300px",
+  maxHeight: "350px",
+  // minHeight: "350px",
   padding: "20px",
   display: "flex",
   flexDirection: "column",

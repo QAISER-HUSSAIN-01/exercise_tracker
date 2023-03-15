@@ -114,19 +114,20 @@ export default function ActivityForm({ exercise }) {
           />
           <TextField
             fullWidth
+            label='Activity Type'
             name="activityType"
             placeholder="Activity Type"
-            defaultChecked={'Activity Type'}
-            defaultValue={"Activity Type"}
+            // defaultValue="Activity Type"
             value={data.activityType}
             onChange={handleChange}
             select
           >
-            <MenuItem value={""}>Select Type</MenuItem>
+            {/* <MenuItem value={""}>Select Type</MenuItem> */}
             <MenuItem value={"hike"}>Hike</MenuItem>
             <MenuItem value={"ride"}>Ride</MenuItem>
             <MenuItem value={"swimming"}>Swimming</MenuItem>
             <MenuItem value={"running"}>Running</MenuItem>
+            <MenuItem value={"running"}>Walking</MenuItem>
           </TextField>
         </FieldsPair>
         <FieldsPair>
