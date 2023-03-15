@@ -116,11 +116,13 @@ export default function ActivityForm({ exercise }) {
             fullWidth
             name="activityType"
             placeholder="Activity Type"
+            defaultChecked={'Activity Type'}
             defaultValue={"Activity Type"}
             value={data.activityType}
             onChange={handleChange}
             select
           >
+            <MenuItem value={""}>Select Type</MenuItem>
             <MenuItem value={"hike"}>Hike</MenuItem>
             <MenuItem value={"ride"}>Ride</MenuItem>
             <MenuItem value={"swimming"}>Swimming</MenuItem>
@@ -165,12 +167,12 @@ export default function ActivityForm({ exercise }) {
       </FormFields>
       <FormActions>
         <ActionMessage variant="caption">
-          Go to User Profile{" "}
+          Go to User Activities{" "}
           <Link
-            href={"/dashboard/profile"}
+            href={"/dashboard/activities"}
             style={{ color: "blue", borderBottom: "1px solid blue" }}
           >
-            Profile
+            Activities
           </Link>{" "}
         </ActionMessage>
         {progress ? (

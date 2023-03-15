@@ -11,7 +11,10 @@ export const ProfileContainer = styled(Box)(({ theme }) => ({
 export const FieldsPair = styled(Box)(({theme})=>({
     display:'flex',
     gap:'20px',
-    width:'100%'
+    width:'100%',
+    [theme.breakpoints.down('sm')]:{
+        flexDirection:'column'
+    }
 
 }))
 export const FormContainer = styled(Box)(({theme})=>({

@@ -1,10 +1,9 @@
 import React from 'react'
+import DashboardComponent from '../../src/components/dashboard'
 import DashboardLayout from '../../src/layouts/dashboardLayout/DashboardLayout'
 
 export default function Dashboard() {
-  return (
-    <div>Dashboard width sidebar and navbar</div>
-  )
+  return <DashboardComponent />
 }
 
 Dashboard.getLayout = function(page){
