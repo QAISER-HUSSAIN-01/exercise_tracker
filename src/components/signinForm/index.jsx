@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   FormContainer,
   FormHeading,
@@ -16,14 +16,31 @@ import { MdKey, MdMail } from "react-icons/md";
 import Link from "next/link";
 import useUser from "../../hooks/useUser";
 export default function SigninForm() {
-  const {handleChange,handleSubmit,progress,data} = useUser();
-
+  const { handleChange, handleSubmit, progress, data } = useUser();
+  const [error, setError] = useState({
+    email: "",
+    password: "",
+  });
+  const emailRef = useRef('');
+  const passwordRef = useRef('');
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    if (value === '') {
+      setError({ ...error, [name]: `${name} must required` })
+    } else {
+      setError({ ...error, [name]: `` })
+    }
+  }
   return (
     <FormContainer component={"form"}>
       <FormHeading>SIGN IN</FormHeading>
       <FormFields>
         <TextField
           fullWidth
+          helperText={error.email}
+          error={error.email}
+          ref={emailRef}
+          onBlur={handleBlur}
           type='email'
           placeholder="Email"
           name="email"
@@ -39,6 +56,10 @@ export default function SigninForm() {
         />
         <TextField
           fullWidth
+          helperText={error.password}
+          error={error.password}
+          ref={passwordRef}
+          onBlur={handleBlur}
           type='password'
           placeholder="Password"
           name="password"
@@ -64,7 +85,7 @@ export default function SigninForm() {
           </Link>{" "}
         </ActionMessage>
         {progress ? (
-          <CircularProgress size={20}/>
+          <CircularProgress size={20} />
         ) : (
           <Button variant="contained" onClick={handleSubmit}>
             Sign in
