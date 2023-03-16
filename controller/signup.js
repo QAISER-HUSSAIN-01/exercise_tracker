@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 
 export const signUp = async(req,res)=>{
     const {username,email,password} = req.body;
-    if(!username,!email,!password){
+    if(!username || !email || !password){
         return res.status(404).json({success:false,message:'please fill all fields'})
     }
     try {

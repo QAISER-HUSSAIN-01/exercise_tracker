@@ -25,7 +25,7 @@ export const getExercise = async (req, res) => {
 
 export const addExercise = async (req, res) => {
   const { name, description, activityType, duration, date } = req.body;
-  if (!name && !description && !activityType && !duration && !date) {
+  if (!name || !description || !activityType || !duration || !date) {
     return res
       .status(404)
       .json({ success: false, message: "please fill all fields" });

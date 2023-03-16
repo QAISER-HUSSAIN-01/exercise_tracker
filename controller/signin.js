@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 export const signIn = async (req, res) => {
   const { email, password } = req.body;
-  if ((!email, !password)) {
+  if ((!email || !password)) {
     return res
       .status(404)
       .json({ success: false, message: "please fill all fields" });

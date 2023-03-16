@@ -27,7 +27,10 @@ function Navbar({ handleSidebar }) {
         <IconButton onClick={handleSidebar}>
           <MdMenu />
         </IconButton>
-        <Typography variant='h6' component={'div'} onClick={gotoLandingPage}>Fitness</Typography>
+        <Typography variant='h6' component={'div'} onClick={gotoLandingPage} sx={{position:'relative'}}>
+           Exercise
+          <Typography variant='caption'   sx={{position:'absolute',right:'0',bottom:'-11px',letterSpacing:'2px'}}>Tracker</Typography>
+        </Typography>
       </Logo>
       <Box>
         <IconButton

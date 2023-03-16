@@ -9,9 +9,10 @@ export const StyledNavbar = styled(Box)(({theme})=>({
 }))
 
 export const Logo = styled(Box)(({theme})=>({
-    fontSize :'2rem',
+    // fontSize :'2rem',
     zIndex:'1',
-    cursor:'pointer'
+    cursor:'pointer',
+    position:'relative'
 }))
 
 export const NavbarButtons = styled(Box)(({theme})=>({

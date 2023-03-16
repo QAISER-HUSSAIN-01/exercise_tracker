@@ -30,7 +30,8 @@ export default function useUser() {
         errorMessage(res.message);
       }
     } catch (error) {
-      errorMessage(error.message);
+      console.log(error);
+      errorMessage(error.response.data.message);
     }
     setProgress(false);
   };
